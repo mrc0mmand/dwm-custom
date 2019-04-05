@@ -73,8 +73,8 @@ static const char *eddcmd[] = { "mate-terminal", "-e", "/bin/bash -ic edd", NULL
 static const char *filemanagercmd[] = { "mate-terminal", "-e", "ranger", NULL };
 static const char *cmdkilldwm[] = { "killall", "dwm", NULL };
 /* Sound & media keys */
-static const char *cmdsoundup[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
-static const char *cmdsounddown[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
+static const char *cmdsoundup[] = { "amixer", "-q", "sset", "Master", "2%+", NULL };
+static const char *cmdsounddown[] = { "amixer", "-q", "sset", "Master", "2%-", NULL };
 static const char *cmdsoundtoggle[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 /* Spotify specific binds for media keys */
 static const char *cmdspotifyplaypause[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause", NULL };
