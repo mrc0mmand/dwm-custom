@@ -43,6 +43,14 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	# Install dwm wrapper for additional custom functionality
+	cp -f scripts/dwm-personalized ${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-personalized
+	# Install custom .desktop file to run dwm-personalized instead of plain dwm
+	mkdir -p ${DESTDIR}${XSESSIONS}
+	cp -f scripts/dwm.desktop ${DESTDIR}${XSESSIONS}/dwm.desktop
+	# Install custom auxiliary scripts
+	cp -f scripts/dwm-switch-keyboard ${DESTDIR}${PREFIX}/bin/dwm-switch-keyboard
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\

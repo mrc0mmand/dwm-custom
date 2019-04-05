@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$1" != "" ]; then
+  map="$1"
+else
+  map=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+  if [ "$map" == "cz(qwerty)" ]; then
+    map="us"
+  else
+    map="cz(qwerty)"
+  fi
+fi
+
+DISPLAY=:0 setxkbmap $map

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Run slstatus
+slstatus &
+
+# Black background
+xsetroot -solid black
+# Fix for Java apps
+wmname LG3D
+# Launch DBus if needed
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
+fi
+# Start polkit agent
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+
+# Start $HOME/.dwm-start if exists
+test -e $HOME/.dwm-start && $HOME/.dwm-start &
+
+while true; do
+    dwm || exit
+done
