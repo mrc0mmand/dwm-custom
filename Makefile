@@ -51,6 +51,9 @@ install: all
 	cp -f scripts/dwm.desktop ${DESTDIR}${XSESSIONS}/dwm.desktop
 	# Install custom auxiliary scripts
 	cp -f scripts/dwm-switch-keyboard ${DESTDIR}${PREFIX}/bin/dwm-switch-keyboard
+	# Install dwm-menu - wrapper around dmenu
+	cp -f scripts/dwm-menu ${DESTDIR}${PREFIX}/bin/dwm-menu
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-menu
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
