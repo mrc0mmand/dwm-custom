@@ -80,10 +80,10 @@ static const char *cmdkilldwm[] = { "killall", "dwm", NULL };
 static const char *cmdsoundup[] = { "amixer", "-q", "sset", "Master", "2%+", NULL };
 static const char *cmdsounddown[] = { "amixer", "-q", "sset", "Master", "2%-", NULL };
 static const char *cmdsoundtoggle[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
-/* Spotify specific binds for media keys */
-static const char *cmdspotifyplaypause[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause", NULL };
-static const char *cmdspotifynext[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next", NULL };
-static const char *cmdspotifyprev[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous", NULL };
+/* Media control */
+static const char *pctlplaycmd[]  = { "playerctl", "play-pause", NULL };
+static const char *pctlnextcmd[]  = { "playerctl", "next", NULL };
+static const char *pctlpreviouscmd[] = { "playerctl", "previous", NULL };
 /* Brightness */
 static const char *cmdbrightnessup[] = { "xbacklight", "-inc", "10", NULL };
 static const char *cmdbrightnessdown[] = { "xbacklight", "-dec", "10", NULL };
@@ -112,11 +112,11 @@ static Key keys[] = {
     { 0,                            XF86XK_AudioRaiseVolume, spawn,  {.v = cmdsoundup } },
     { 0,                            XF86XK_AudioLowerVolume, spawn,  {.v = cmdsounddown } },
     { 0,                            XF86XK_AudioMute, spawn,         {.v = cmdsoundtoggle } },
-    { 0,                            XF86XK_AudioPlay, spawn,         {.v = cmdspotifyplaypause } },
-    { 0,                            XF86XK_AudioNext, spawn,         {.v = cmdspotifynext } },
-    { 0,                            XF86XK_AudioPrev, spawn,         {.v = cmdspotifyprev } },
-    { 0,                            XF86XK_Launch6, spawn,           {.v = cmdspotifynext } },
-    { 0,                            XF86XK_Launch5, spawn,           {.v = cmdspotifyprev } },
+    { 0,                            XF86XK_AudioPlay, spawn,         {.v = pctlplaycmd} },
+    { 0,                            XF86XK_AudioNext, spawn,         {.v = pctlnextcmd} },
+    { 0,                            XF86XK_AudioPrev, spawn,         {.v = pctlpreviouscmd} },
+    { 0,                            XF86XK_Launch6, spawn,           {.v = pctlnextcmd} },
+    { 0,                            XF86XK_Launch5, spawn,           {.v = pctlpreviouscmd} },
     /* Killing dwm */
     //{ MODKEY|ShiftMask,             XK_q,      spawn,                {.v = cmdkilldwm} },
     /* Brightness */
